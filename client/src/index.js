@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Provider from './context/AppProvider';
 
 ReactDOM.render(
-  <Provider>
+  <React.StrictMode>
     <App />
-  </Provider>,
+  </React.StrictMode>,
   document.getElementById('root')
 );

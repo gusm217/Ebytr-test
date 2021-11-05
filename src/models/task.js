@@ -28,9 +28,9 @@ const updateTask = async (id) => {
 const deleteTask = async (id) => {
   return connection()
     .then((db) =>
-      db.collection('tasks').findByIdAndDelete({ _id: ObjectId(id) })
+      db.collection('tasks').findOneAndDelete({ _id: ObjectId(id) })
     )
-    .then((res) => res)
+    .then((res) => res.value)
     .catch((err) => err);
 };
 

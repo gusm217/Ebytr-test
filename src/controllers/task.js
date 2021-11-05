@@ -13,9 +13,13 @@ const createTask = async (req, res) => {
   }
 };
 
-const getAllTasks = async (req, res) => {
-  const tasks = await tasksModel.getAllTasks();
-  res.status(200).json(tasks);
+const getAllTasks = async (_req, res) => {
+  try {
+    const tasks = await tasksModel.getAllTasks();
+    res.status(200).json(tasks);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const updateTask = async (req, res) => {
@@ -29,7 +33,8 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   try {
-    const task = await tasksModel.deleteTask(req.params.id);
+    const { id } = req.params;
+    const task = await tasksModel.deleteTask(id);
     res.status(200).json(task);
   } catch (err) {
     console.log(err);
